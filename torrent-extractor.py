@@ -8,8 +8,10 @@ registryFile = '/volume1/homes/leschekfm/torrent-registry.txt'
 logFile = '/volume1/homes/leschekfm/extract-log.txt'
 
 def log(text):
+    text = str(datetime.now()) + ': ' + text + '\n'
+    print text
     with open(logFile, 'a') as f:
-        f.write(str(datetime.now()) + ': ' + text + '\n')
+        f.write(text)
 
 def listDownloads(path):
     return os.listdir(path)
