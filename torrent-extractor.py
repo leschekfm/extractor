@@ -91,6 +91,15 @@ for dl in listDownloads(downloadFolder):
             os.link(path, os.path.join(videoFolder, name, dl))
             log('[SUCCESS]: created hardlink for ' + dl)
             markProcessed(dl)
+        elif ext == '.zip':
+            os.mkdir(os.path.join(videoFolder, name))
+            # extract archive
+            cmd = 'unzip -v ' + path + ' -d ' + os.path.join(videoFolder, dl)
+            print cmd
+            log('[EXTRACTING]: Start extracting ' + dl)
+            subprocess.call(cmd, shell=True)
+            log('[EXTRACTING]: Finished extracting ' + dl)
+            markProcessed(dl)
         else:
             log('[WARNING]: ' + path + ' is not a video')
     else:
