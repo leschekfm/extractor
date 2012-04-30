@@ -94,7 +94,7 @@ for dl in listDownloads(downloadFolder):
         elif ext == '.zip':
             os.mkdir(os.path.join(videoFolder, name))
             # extract archive
-            cmd = 'unzip -v ' + path + ' -d ' + os.path.join(videoFolder, dl)
+            cmd = 'unzip ' + path + ' -d ' + os.path.join(videoFolder, name)
             print cmd
             log('[EXTRACTING]: Start extracting ' + dl)
             subprocess.call(cmd, shell=True)
