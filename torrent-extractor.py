@@ -63,17 +63,18 @@ for dl in listDownloads(downloadFolder):
             print os.path.join(path, videoPath) +' -> '+ os.path.join(videoFolder, dl, videoName)'''
             os.link(os.path.join(path, videoPath), os.path.join(videoFolder, dl, videoName))
             log('[SUCCESS]: created hardlink for ' + dl)
-            #search for matching nfo file
-            nfos = findExtension(path, '.nfo')
-            # although there should be only one file we iterate over the list returned by findExtension()
-            for nfoPath, nfoName in nfos:
-                os.link(nfoPath, os.path.join(videoFolder, dl, nfoName))
+
             markProcessed(dl)
+        #search for matching nfo file
+        nfos = findExtension(path, '.nfo')
+        # although there should be only one file we iterate over the list returned by findExtension()
+        for nfoPath, nfoName in nfos:
+            os.link(nfoPath, os.path.join(videoFolder, dl, nfoName))
         # search for .rar file and extract it
         archives = findExtension(path, '.rar')
         if len(archives) > 1:
             log('[WARNING]: ' + dl + ' has more than one rar file, please check manually')
-            continue
+            #continue
         for archivePath, archiveName in archives:
             cmd = 'unrar x ' + os.path.join(path, archivePath) + ' ' + os.path.join(videoFolder, dl)
             print cmd
