@@ -2,6 +2,7 @@
 from datetime import datetime
 import os, subprocess
 
+# TODO move to config file
 downloadFolder = '/volume1/homes/transmission/download'
 videoFolder = '/volume1/Videos/unsorted'
 registryFile = '/volume1/homes/leschekfm/torrent-registry.txt'
