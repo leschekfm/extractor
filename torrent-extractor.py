@@ -79,9 +79,9 @@ for dl in listDownloads(downloadFolder):
         for archivePath, archiveName in archives:
             cmd = 'unrar x ' + os.path.join(path, archivePath) + ' ' + os.path.join(videoFolder, dl)
             print cmd
-            log('[EXTRACTING]: Start extracting ' + dl)
+            log('[EXTRACTING]: Start extracting ' + archivePath)
             subprocess.call(cmd, shell=True)
-            log('[EXTRACTING]: Finished extracting ' + dl)
+            log('[EXTRACTING]: Finished extracting ' + archivePath)
             #markProcessed(dl)
         #only mark as processed if all operations went through without errors
         markProcessed(dl)
