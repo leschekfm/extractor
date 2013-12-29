@@ -3,8 +3,8 @@ from datetime import datetime
 import os, subprocess
 
 # TODO move to config file
-downloadFolder = '/volume1/homes/transmission/download'
-videoFolder = '/volume1/Videos/unsorted'
+downloadFolder = '/volume1/transmission/download'
+videoFolder = '/volume1/video/unsorted'
 registryFile = '/volume1/homes/leschekfm/torrent-registry.txt'
 logFile = '/volume1/homes/leschekfm/extract-log.txt'
 
