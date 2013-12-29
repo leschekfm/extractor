@@ -65,7 +65,7 @@ for dl in listDownloads(downloadFolder):
             os.link(os.path.join(path, videoPath), os.path.join(videoFolder, dl, videoName))
             log('[SUCCESS]: created hardlink for ' + dl)
 
-            markProcessed(dl)
+            #markProcessed(dl)
         #search for matching nfo file
         nfos = findExtension(path, '.nfo')
         # although there should be only one file we iterate over the list returned by findExtension()
@@ -82,7 +82,9 @@ for dl in listDownloads(downloadFolder):
             log('[EXTRACTING]: Start extracting ' + dl)
             subprocess.call(cmd, shell=True)
             log('[EXTRACTING]: Finished extracting ' + dl)
-            markProcessed(dl)
+            #markProcessed(dl)
+        #only mark as processed if all operations went through without errors
+        markProcessed(dl)
     elif os.path.isfile(path):
         # check if file is video
         name, ext = os.path.splitext(dl)
