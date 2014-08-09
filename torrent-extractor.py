@@ -62,7 +62,11 @@ for dl in listDownloads(downloadFolder):
             print 'videofolder: ' + videoFolder + '\n'
             print 'dl: ' + dl + '\n'
             print os.path.join(path, videoPath) +' -> '+ os.path.join(videoFolder, dl, videoName)'''
-            os.link(os.path.join(path, videoPath), os.path.join(videoFolder, dl, videoName))
+            filePath = os.path.join(videoFolder, dl, videoName)
+            # check for duplicated files
+            while os.path.isfile(filePath):
+                filePath += '1'
+            os.link(os.path.join(path, videoPath), filePath)
             log('[SUCCESS]: created hardlink for ' + dl)
 
             #markProcessed(dl)
